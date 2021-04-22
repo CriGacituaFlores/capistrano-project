@@ -3,7 +3,7 @@ lock "~> 3.16.0"
 
 set :application, "cristiangacitua"
 set :repo_url, "git@github.com:CriGacituaFlores/capistrano-project.git"
-set deploy_to, 'home/deploy/cristian_gacitua'
+set :deploy_to, 'home/deploy/cristian_gacitua'
 set :branch, ENV['BRANCH'] if ENV['BRANCH']
 
 set :linked_files, %w{config/database.yml config/master.key}

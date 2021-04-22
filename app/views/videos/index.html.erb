@@ -12,11 +12,15 @@
         allowfullscreen></iframe>
         <%= video.position %>
         <%= link_to 'Show', video %>
-        <%= link_to 'Edit', edit_video_path(video) %>
-        <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if user_signed_in? && current_user.admin? %>
+          <%= link_to 'Edit', edit_video_path(video) %>
+          <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
       </div>
     <% end %>
   </div>
 </div>
 
-<%= link_to 'New Video', new_video_path %>
+<%if user_signed_in? && current_user.admin? %>
+  <%= link_to 'New Video', new_video_path %>
+<% end %>

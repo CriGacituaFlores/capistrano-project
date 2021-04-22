@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update]
-  resources :videos
+  resources :videos, only: [:index, :show]
+
+  authenticate :user, lambda { |u| y.admin? } do
+    resources :videos
+  end
+
   get 'pages/home'
   root 'pages#home'
   match '/send_mail', to: 'pages#send_mail', via: 'post'
